@@ -7,9 +7,6 @@
    Gatsby Bootstrap 5 starter
 </h1>
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/2496959d-1507-4717-8fd6-846282c3a409/deploy-status)](https://app.netlify.com/sites/gatsby-bootstrap-5/deploys)
-![dependancies](https://img.shields.io/david/r-ichard/gatsby-starter-bootstrap-5)
-
 Minimal bootstrap 5 and Gatsby configuration with SCSS support. 
 
 Demo here : https://gatsby-bootstrap-5.netlify.app
@@ -34,7 +31,7 @@ npm install -g netlify-cli
 
     ```shell
     cd gatsby-starter-bootstrap-5/
-    netlify develop
+    netlify dev
     ```
 
 1.  **Open the source code and start editing!**
