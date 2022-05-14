@@ -1,7 +1,7 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 const isActive = ({ isCurrent }) => {
   return isCurrent ? { className: "nav-link active" } : {className: "nav-link"}
@@ -11,7 +11,7 @@ const ExactNavLink = props => (
   <Link getProps={isActive} {...props} />
 )
 
-const Navbar = ({ siteTitle }) => {
+const Navbar = ({ siteTitle, uAuth }) => {
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-primary">
       <div className="container-fluid">
@@ -20,24 +20,31 @@ const Navbar = ({ siteTitle }) => {
                 aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-
         <div className="collapse navbar-collapse" id="main-navbar">
+          {uAuth ? (        
+          <>
+            <ul className="navbar-nav me-auto mb-2 mb-md-0">
+            <li className="nav-item">
+                <ExactNavLink
+                  to="/profile"
+                >
+                  Profile
+                </ExactNavLink>
+              </li>
+            </ul>
+            <div className="d-flex">
+              <a className="btn btn-secondary" href="/logout">Logout</a>
+            </div>
+          </>
+        ) : (
+          <>
           <ul className="navbar-nav me-auto mb-2 mb-md-0">
-            <li className="nav-item">
-              <ExactNavLink
-                to="/"
-              >
-                Home
-              </ExactNavLink>
-            </li>
-            <li className="nav-item">
-              <ExactNavLink
-                to="/about"
-              >
-                About
-              </ExactNavLink>
-            </li>
           </ul>
+          <div className="d-flex">
+              <a className="btn btn-light ms-3" href="/login">Login</a>
+            </div>
+          </>
+        )}
         </div>
       </div>
     </nav>
